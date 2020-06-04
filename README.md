@@ -2,7 +2,7 @@
 
 A reference, since I always seem to mess the configuration of this up at some point...
 
-This demo uses the [client credentials](https://oauth.net/2/grant-types/client-credentials/) grant type which requires keeping a secret and is suited for machine-to-machine authentication to the service. [More info on different grant types](https://oauth.net/2/grant-types/).
+This demo uses the [client credentials](https://oauth.net/2/grant-types/client-credentials/) grant type which requires keeping a secret, making it best suited for machine-to-machine authentication. [More info on different grant types](https://oauth.net/2/grant-types/).
 
 ## Deploy and configure
 
@@ -36,13 +36,13 @@ Azure Portal UI specifics likely to change the older this gets, but the general 
       1. client_secret={client secret determined above}
       1. grant_type=client_credentials
       1. scope={client ID determined above}/.default
-   1. POST should return HTTP 200 OK w/ a JSON body containing an `access_token` field, copy it
+   1. Response should return HTTP 200 OK w/ a JSON body containing an `access_token` field, copy it
 
 1. Supply the token in an `Authorization` header of the `GET` request to the service:
    1. E.g. in Postman: Request -> Authorization tab -> Type -> Bearer Token -> paste
    1. For later: Postman can [get the token for you](https://learning.postman.com/docs/postman/sending-api-requests/authorization/#oauth-20) as a logical next step
 
-1. At this point, `GET https://{appservicename}.azurewebsites.net` should succeed w/ HTTP 200 OK as long as a valid, unexpired token is provided in the `Authorization: Bearer {token}` header. ✔️
+1. At this point, `GET https://{appservicename}.azurewebsites.net` should succeed w/ HTTP 200 OK as long as a valid, unexpired token is provided in the `Authorization: Bearer {token}` header ✔️
 
 ## References
 
